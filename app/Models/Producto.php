@@ -9,7 +9,8 @@ class Producto extends Model
 {
     use HasFactory;
     protected $fillable = ['nombre', 'descripcion', 'imagen', 'disponibles', 'precio', 'id_categoria'];
-
-
+    public function categoria()
+    {
+        return $this->hasOne(Categoria::class);
+    }
 }
-

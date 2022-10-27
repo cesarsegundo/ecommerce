@@ -20,10 +20,10 @@ return new class extends Migration
             $table->string('image');
             $table->smallInteger('disponibles');
             $table->float('precio', 6, 2);
-            $table->unsignedBigInteger('id_categoria');
+            $table->unsignedBigInteger('categoria_id');
             $table->timestamps();
 
-            $table->foreign('id_categoria')
+            $table->foreign('categoria_id')
                 ->references('id')
                 ->on('categorias')
                 ->onUpdate('cascade')

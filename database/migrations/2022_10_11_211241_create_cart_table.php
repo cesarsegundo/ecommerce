@@ -15,18 +15,18 @@ return new class extends Migration
     {
         Schema::create('cart', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_producto');
-            $table->unsignedBigInteger('id_usuario');
+            $table->unsignedBigInteger('producto_id');
+            $table->unsignedBigInteger('usuario_id');
             $table->integer('cantidad');
             $table->integer('total');
             $table->timestamps();
 
-            $table->foreign('id_producto')
+            $table->foreign('producto_id')
                 ->references('id')
                 ->on('productos')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->foreign('id_usuario')
+            $table->foreign('usuario_id')
                 ->references('id')
                 ->on('users')
                 ->onUpdate('cascade')

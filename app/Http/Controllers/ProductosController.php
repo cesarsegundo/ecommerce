@@ -24,7 +24,7 @@ class ProductosController extends Controller
         $producto->image = $nameImage;
         $producto->disponibles = $request->input('disponibles');
         $producto->precio = $request->input('precio');
-        $producto->id_categoria = $request->input('id_categoria');
+        $producto->categoria_id = $request->input('categoria_id');
 
         $request->image->move(public_path('images'), $nameImage);
         $producto->save();

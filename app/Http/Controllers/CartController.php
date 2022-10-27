@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Producto;
 
-
-
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -21,10 +19,10 @@ class CartController extends Controller
     public function saveProducts($id)
     {
         $product = Producto::findOrFail($id);
-
+        //dd($product);
         Cart::create([
-            'id_producto' => $product->id,
-            'id_usuario' => auth()->id(),
+            'producto_id' => $product->id,
+            'usuario_id' => auth()->id(),
             'cantidad' => 1,
             'total' => $product->precio
         ]);
