@@ -22,6 +22,7 @@ Route::controller(ProductosController::class)->group(function () {
 Route::controller(CartController::class)->group(function () {
     Route::get('/carrito', "index");
     Route::post('/carrito/{id}', "saveProducts")->name('saveproducts');
+    Route::delete('/carrito/{cart}', 'delete')->name('cart-delete');
 });
 
 
