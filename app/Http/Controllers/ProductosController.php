@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProductosController extends Controller
@@ -35,5 +36,18 @@ class ProductosController extends Controller
     {
         $productos = Producto::all();
         return view('products.productos')->with(['productos' => $productos]);
+    }
+    public function showAdmin()
+    {
+        $productos = Producto::all();
+        return view('admin.products')->with(['productos' => $productos]);
+    }
+    public function deleteAdmin(Producto $producto)
+    {
+        $image_path = public_path().'/images/' . $producto->image;
+        //dd($image_path);
+        unlink($image_path);
+        $producto->delete();
+        return back();
     }
 }
