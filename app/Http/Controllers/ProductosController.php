@@ -17,17 +17,17 @@ class ProductosController extends Controller
     {
         //Producto::create($request->all());
 
-        $nameImage = $request->image->getClientOriginalName();
+        //$nameImage = $request->image->getClientOriginalName();
         $producto = new Producto;
 
         $producto->nombre = $request->input('nombre');
         $producto->descripcion = $request->input('descripcion');
-        $producto->image = $nameImage;
+        $producto->image = $request->input('imagen');
         $producto->disponibles = $request->input('disponibles');
         $producto->precio = $request->input('precio');
         $producto->categoria_id = $request->input('categoria_id');
 
-        $request->image->move(public_path('images'), $nameImage);
+        //$request->image->move(public_path('images'), $nameImage);
         $producto->save();
 
         return redirect('/productos');
@@ -44,9 +44,9 @@ class ProductosController extends Controller
     }
     public function deleteAdmin(Producto $producto)
     {
-        $image_path = public_path().'/images/' . $producto->image;
+        //$image_path = public_path().'/images/' . $producto->image;
         //dd($image_path);
-        unlink($image_path);
+        //unlink($image_path);
         $producto->delete();
         return back();
     }

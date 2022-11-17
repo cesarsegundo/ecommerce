@@ -16,7 +16,7 @@
                     <tr class="bg-white border-b-2">
                         <td class="py-4 px-6">{{ $producto->nombre }}</td>
                         <td class="py-4 px-6">
-                            <img class="p-8 rounded-t-lg w-28" src="{{asset('images/' . $producto->image)}}" alt="product image" />
+                            <img class="p-8 rounded-t-lg w-28" src="{{$producto->image}}" alt="product image" />
                         </td>
                         <td class="py-4 px-6">{{ $producto->disponibles }}</td>
                         <td class="py-4 px-6">${{ $producto->precio }}</td>

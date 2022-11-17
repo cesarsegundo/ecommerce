@@ -11,8 +11,8 @@
                 <input name="descripcion" type="text" class="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500" required>
             </div>
             <div class="mb-6">
-                <label class="block mb-2 text-sm font-medium text-gray-900 ">Subir imagen</label>
-                <input accept="image/*" name="image" type="file" class="block p-4 text-gray-900 rounded-lg border " required>
+                <label class="block mb-2 text-sm font-medium text-gray-900 ">URL de la imagen</label>
+                <input name="imagen" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
             </div>
             <div class="flex justify-around">
                 <div class="mb-6">
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="mb-6">
-                <button type="submit">Registrar</button>
+                <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">Registrar</button>
             </div>
         </form>
     </div>

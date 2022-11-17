@@ -4,7 +4,7 @@
         @foreach ($productos as $producto)
         <div class="w-full max-w-sm bg-white rounded-lg border-2">
             <a href="#">
-                <img class="p-8 rounded-t-lg" src="{{asset('images/' . $producto->image)}}" alt="product image" />
+                <img class="p-8 rounded-t-lg" src="{{$producto->image}}" alt="product image" />
             </a>
             <div class="px-5 pb-5">
                 <h5 class="text-xl font-semibold  text-gray-900">{{$producto->nombre}}</h5>
