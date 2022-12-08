@@ -9,13 +9,14 @@
             <div class="flex mt-10 mb-5">
               <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Detalles del producto</h3>
               <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Precio</h3>
+              <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Cantidad</h3>
               <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
             </div>
             @foreach ($pedidos as $pedido)
             <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
                 <div class="flex w-2/5"> <!-- product -->
                   <div class="w-20">
-                    <img class="h-24" src="{{asset('images/' . $pedido->producto->image)}}" alt="">
+                    <img class="h-24" src="{{$pedido->producto->image}}" alt="imagen del poducto">
                   </div>
                   <div class="flex flex-col ml-4 flex-grow">
                     <span class="mb-3 mt-2">{{$pedido->producto->nombre}}</span>
@@ -27,7 +28,15 @@
                   </div>
                 </div>
                 <span class="text-center w-1/5 font-semibold text-sm">${{$pedido->producto->precio}}</span>
-                <span class="text-center w-1/5 font-semibold text-sm">$400.00</span>
+                <span class="text-center w-1/5 font-semibold text-sm">
+                  <form method="POST" action="{{ route('cart-update', ['cart' => $pedido->id])}}">
+                    @method('PUT')
+                    @csrf
+                    <input name="cantidad" class="w-20" type="number" value={{$pedido->cantidad}}>
+                    <button class="bg-indigo-400 p-1 text-xs text-gray-700">Actualizar</button>
+                  </form>
+                </span>
+                <span class="text-center w-1/5 font-semibold text-sm">${{$pedido->total}}</span>
               </div>
             @endforeach 
             <a href="/productos" class="flex font-semibold text-indigo-600 text-sm mt-10">
@@ -42,8 +51,8 @@
             </div>
             <div class="border-t mt-8">
               <div class="flex font-semibold justify-between py-6 text-sm uppercase">
-                <span>Costo total</span>
-                <span>$600</span>
+                <span>Costo total:</span>
+                <span>${{ $sum_total }}</span>
               </div>
               <button class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Pagar</button>
             </div>

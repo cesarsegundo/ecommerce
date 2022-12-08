@@ -10,13 +10,16 @@ class CartController extends Controller
 {
     public function index()
     {   
-        $pedidos = Cart::all();
-        $total_products = count($pedidos);
-        //dd($total_products);
+        $pedidos = Cart::where('usuario_id', auth()->id())->get();
+        $total_products = Cart::where('usuario_id', auth()->id())->sum('cantidad');
+        $sum_total = Cart::where('usuario_id', auth()->id())->sum('total');
+
+        // dd($total_products);
         return view('cart.index')
             ->with([
                 'pedidos' => $pedidos,
-                'total_products' => $total_products
+                'total_products' => $total_products,
+                'sum_total' => $sum_total
             ]);
     }
     public function saveProducts($id)
@@ -30,6 +33,16 @@ class CartController extends Controller
             'total' => $product->precio
         ]);
         return redirect(route('products.show'));    
+    }
+    public function updateItem(Cart $cart, Request $request)
+    {
+        $product = Producto::findOrFail($cart->producto_id);
+
+        $cart->cantidad = $request->input('cantidad');
+        $cart->total = $request->input('cantidad') * $product->precio;
+        $cart->save();
+        return back();
+         
     }
     public function delete(Cart $cart)
     {
