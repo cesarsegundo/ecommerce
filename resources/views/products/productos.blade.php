@@ -1,5 +1,5 @@
 <x-site-layout>
-    <div class="my-20 mx-32 p-5 bg-slate-100 h-full rounded-lg shadow-2xl flex">
+    <div class="my-20 mx-32 p-5 bg-slate-100 h-full rounded-lg shadow-2xl grid grid-cols-3">
         
         @foreach ($productos as $producto)
         <div class="w-full max-w-sm bg-white rounded-lg border-2">
